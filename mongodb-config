@@ -1,0 +1,22 @@
+var {MongoClient} = require ('mongodb');
+const client = new MongoClient('mongodb://127.0.0.1:27017');
+
+
+//this function return the db.<collection-name>
+async function dbConnect (){
+    //client.connect connect us to url given in MongoClient
+    let result = await client.connect();
+    //connecting to database
+    let db = result.db('employees');
+    //connecting to collection
+   return db.collection('managers'); 
+}
+
+//Below code is to get the data from mongodb
+
+// dbConnect().then((resp)=>{
+//        let find = resp.find({})
+//        find.toArray()
+//        .then((findarr)=>{console.log(findarr);});
+   
+// })
